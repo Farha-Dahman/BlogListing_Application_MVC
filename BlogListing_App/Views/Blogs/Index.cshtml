@@ -6,11 +6,38 @@
 
 <h1 class="mb-4">All Blogs</h1>
 
-<p>
-    <a asp-action="Create" class="btn btn-primary">Create New Blog</a>
-</p>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <!-- Create New Blog Button -->
+    <a asp-action="Create" class="btn btn-success">Create New Blog</a>
 
+    <!-- Search and Filter Section -->
+    <div class="d-flex align-items-center">
+        <!-- Search Form -->
+        <form method="get" class="d-flex me-3">
+            <input type="text" name="searchQuery" class="form-control me-2" placeholder="Search by Title or Author" value="@ViewContext.HttpContext.Request.Query["searchQuery"]" />
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
 
+        <!-- Filter Dropdown -->
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-funnel"></i> Filter
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="filterDropdown">
+                <li>
+                    <a class="dropdown-item" href="?selectedCategory=">All Categories</a>
+                </li>
+                @foreach (var category in new List<string> { "Technology", "Lifestyle", "Business", "Food", "News" })
+                {
+                    <li>
+                        <a class="dropdown-item @(ViewContext.HttpContext.Request.Query["selectedCategory"] == category ? "active" : "")"
+                           href="?selectedCategory=@category">@category</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
 
 <div class="table-responsive">
     <table class="table table-bordered table-striped">

@@ -19,11 +19,30 @@ namespace BlogListing_App.Controllers
         }
 
         // GET: Blogs
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchQuery, string selectedCategory)
         {
-            return View(await _context.BlogPosts.ToListAsync());
-        }
+            // Retrieve all categories for the filter dropdown
+            ViewBag.Categories = new List<string> { "Technology", "Lifestyle", "Business", "Food", "News" };
 
+            // Start with the base query
+            var blogs = _context.BlogPosts.AsQueryable();
+
+            // Filter by search query (Title or Author)
+            if (!string.IsNullOrEmpty(searchQuery))
+            {
+                blogs = blogs.Where(b => b.Title.Contains(searchQuery) || b.Author.Contains(searchQuery));
+            }
+
+            // Filter by selected category
+            if (!string.IsNullOrEmpty(selectedCategory))
+            {
+                blogs = blogs.Where(b => b.Category == selectedCategory);
+            }
+
+            var result = await blogs.ToListAsync();
+            return View(result);
+        }
+    
         // GET: Blogs/Details/5
         public async Task<IActionResult> Details(int? id)
         {
