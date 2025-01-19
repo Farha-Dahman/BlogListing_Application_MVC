@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Blog Homepage";
+}
+
+<div class="bg-image text-white text-center py-5" style="background-image: url('https://assets-global.website-files.com/65564cccb96e7adcae4611ef/65564cccb96e7adcae4613c7_132694218.webp'); background-size: cover; background-position: center;">
+    <h1 class="display-3 mb-3">Welcome to Our Blog</h1>
+    <p class="lead mb-4">Explore the latest posts, news, and updates. Join the conversation and share your thoughts!</p>
+    <a href="@Url.Action("Index", "Blogs")" class="btn btn-dark btn-lg">View Latest Blogs</a>
+</div>
+
+<div class="container text-center mt-5">
+    <h2 class="mb-4">What is our Blog?</h2>
+    <p class="lead">Our blog is a place where we share valuable insights, stories, and updates about various topics. From technology to lifestyle, you’ll find interesting reads for everyone!</p>
+    <a href="@Url.Action("Index", "Blogs")" class="btn btn-outline-dark btn-lg">Explore Our Blogs</a>
+</div>

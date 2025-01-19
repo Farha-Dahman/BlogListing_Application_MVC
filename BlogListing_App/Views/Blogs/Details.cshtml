@@ -1,0 +1,38 @@
+﻿@model BlogListing_App.Models.Blog
+
+@{
+    ViewData["Title"] = "Blog Details";
+}
+
+<h1 class="mb-4">Post Details</h1>
+
+<div class="card">
+    <div class="card-header">
+        <h4>@Model.Title</h4>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <!-- Author -->
+            <dt class="col-sm-3">Author:</dt>
+            <dd class="col-sm-9">@Model.Author</dd>
+
+            <!-- Published Date -->
+            <dt class="col-sm-3">Published Date:</dt>
+            <dd class="col-sm-9">@Model.PublishedDate.ToString("MMMM dd, yyyy")</dd>
+
+            <!-- Category -->
+            <dt class="col-sm-3">Category:</dt>
+            <dd class="col-sm-9">@Model.Category</dd>
+
+            <!-- Content -->
+            <dt class="col-sm-3">Content:</dt>
+            <dd class="col-sm-9">
+                <p>@Model.Content</p>
+            </dd>
+        </dl>
+    </div>
+    <div class="card-footer text-end">
+        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning me-2">Edit</a>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
