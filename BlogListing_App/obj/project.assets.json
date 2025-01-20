@@ -7769,11 +7769,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\farha\\Documents\\.NetCore\\BlogListing_Application_MVC\\BlogListing_App\\BlogListing_App.csproj",
+      "projectUniqueName": "C:\\Users\\farha\\Documents\\BlogListing_Application_MVC\\BlogListing_App\\BlogListing_App.csproj",
       "projectName": "BlogListing_App",
-      "projectPath": "C:\\Users\\farha\\Documents\\.NetCore\\BlogListing_Application_MVC\\BlogListing_App\\BlogListing_App.csproj",
+      "projectPath": "C:\\Users\\farha\\Documents\\BlogListing_Application_MVC\\BlogListing_App\\BlogListing_App.csproj",
       "packagesPath": "C:\\Users\\farha\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\farha\\Documents\\.NetCore\\BlogListing_Application_MVC\\BlogListing_App\\obj\\",
+      "outputPath": "C:\\Users\\farha\\Documents\\BlogListing_Application_MVC\\BlogListing_App\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

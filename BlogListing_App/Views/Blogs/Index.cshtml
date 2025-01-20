@@ -6,12 +6,12 @@
 
 <h1 class="mb-4">All Blogs</h1>
 
-<div class="d-flex justify-content-between align-items-center mb-3">
+<div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
     <!-- Create New Blog Button -->
-    <a asp-action="Create" class="btn btn-success">Create New Blog</a>
+    <a asp-action="Create" class="btn btn-success">Create New Blog github</a>
 
     <!-- Search and Filter Section -->
-    <div class="d-flex align-items-center">
+    <div class="d-flex align-items-center mt-2 mt-sm-0">
         <!-- Search Form -->
         <form method="get" class="d-flex me-3">
             <input type="text" name="searchQuery" class="form-control me-2" placeholder="Search by Title or Author" value="@ViewContext.HttpContext.Request.Query["searchQuery"]" />
@@ -39,6 +39,7 @@
     </div>
 </div>
 
+
 <div class="table-responsive">
     <table class="table table-bordered table-striped">
         <thead class="table-light">
@@ -52,29 +53,38 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model)
+            @if (Model == null || !Model.Any())
             {
                 <tr>
-                    <td>@item.Title</td>
-                    <td>
-                        @if (!string.IsNullOrEmpty(item.Content) && item.Content.Length > 50)
-                        {
-                            @($"{item.Content.Substring(0, 50)}...")
-                        }
-                        else
-                        {
-                            @item.Content
-                        }
-                    </td>
-                    <td>@item.Author</td>
-                    <td>@item.PublishedDate.ToString("yyyy-MM-dd")</td>
-                    <td>@item.Category</td>
-                    <td class="text-center">
-                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Edit</a>
-                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info text-white">Details</a>
-                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
-                    </td>
+                    <td colspan="6" class="text-center">No blogs available yet. Add a new blog to get started!</td>
                 </tr>
+            }
+            else
+            {
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Title</td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(item.Content) && item.Content.Length > 50)
+                            {
+                                @($"{item.Content.Substring(0, 50)}...")
+                            }
+                            else
+                            {
+                                @item.Content
+                            }
+                        </td>
+                        <td>@item.Author</td>
+                        <td>@item.PublishedDate.ToString("yyyy-MM-dd")</td>
+                        <td>@item.Category</td>
+                        <td class="text-center">
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Edit</a>
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info text-white">Details</a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
             }
         </tbody>
     </table>
